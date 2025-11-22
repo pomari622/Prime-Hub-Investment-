@@ -1,0 +1,3398 @@
+<!-- ======================= -->
+<!-- HTML DOCUMENT STRUCTURE -->
+<!-- ======================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ==================== -->
+    <!-- HEAD & META SECTION -->
+    <!-- ==================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Hub Investment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ============== -->
+    <!-- CSS STYLES -->
+    <!-- ============== -->
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #0f172a;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--secondary) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        .container {
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .main-content {
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            animation: slideDown 0.6s ease;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .back-btn, .menu-btn, .notification-bell {
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+        }
+
+        .back-btn:hover, .menu-btn:hover, .notification-bell:hover {
+            background: var(--bg-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Remove notification badge styles */
+        .notification-badge {
+            display: none !important;
+        }
+
+        /* Auth Section */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .auth-box {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .auth-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            flex: 1;
+            text-align: center;
+        }
+
+        .auth-tab.active {
+            border-bottom: 3px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 15px;
+            padding-right: 45px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-group input.invalid {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+            animation: shake 0.5s ease;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 42px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-password:hover {
+            color: var(--accent);
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            color: var(--text-secondary);
+        }
+
+        .remember-me input {
+            width: auto;
+        }
+
+        .btn {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(30, 64, 175, 0.4);
+        }
+
+        .btn-success {
+            background: var(--gradient-success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        /* Dashboard Sections */
+        .dashboard-section {
+            display: none;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .dashboard-section.active {
+            display: block;
+        }
+
+        .welcome-card {
+            background: var(--gradient-primary);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+            animation: slideInLeft 0.6s ease;
+        }
+
+        .balance-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: slideInRight 0.6s ease;
+        }
+
+        .balance-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;
+            color: var(--accent);
+            opacity: 0.3;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .balance-amount {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+        }
+
+        .profit-amount {
+            font-size: 18px;
+            color: var(--success);
+        }
+
+        /* Compact Side-by-Side Action Buttons */
+        .quick-actions-horizontal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .action-btn-compact {
+            background: var(--bg-card);
+            padding: 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        .action-btn-compact:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .action-btn-compact:nth-child(2) .action-icon {
+            background: var(--gradient-accent);
+        }
+
+        .action-text {
+            flex: 1;
+        }
+
+        .action-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .action-subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0 15px 0;
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-all {
+            color: var(--accent);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-all:hover {
+            transform: translateX(3px);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 16px;
+            min-width: 70px;
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+            background: var(--bg-hover);
+            transform: translateY(-5px);
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active i {
+            transform: scale(1.2);
+        }
+
+        .nav-item span {
+            font-size: 12px;
+        }
+
+        /* Investment Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .plan-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .plan-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .plan-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .plan-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .plan-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .plan-desc {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .plan-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .plan-detail {
+            text-align: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .plan-detail:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .plan-detail .value {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .plan-detail .label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .return-amount {
+            background: var(--success);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        /* Transaction Cards */
+        .transaction-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.6s ease;
+        }
+
+        .amount-input {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .limits {
+            text-align: center;
+            color: var(--text-secondary);
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .wallet-address {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            word-break: break-all;
+            font-family: monospace;
+            border: 1px dashed var(--primary);
+            animation: pulse 3s infinite;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .step {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .step.completed {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        /* History Table */
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .history-table th, .history-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .history-table th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            background: var(--bg-card);
+            position: sticky;
+            top: 0;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .status-complete {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .status-rejected {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+        }
+
+        .status-processing {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary-light);
+        }
+
+        /* Profile Section */
+        .profile-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.6s ease;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: var(--shadow);
+            animation: bounce 2s infinite;
+        }
+
+        .profile-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .profile-option {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-option:hover {
+            background: var(--bg-hover);
+            transform: translateX(5px);
+        }
+
+        .profile-option.danger {
+            color: var(--danger);
+        }
+
+        /* Menu Panel */
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100%;
+            background: var(--bg-card);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 999;
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-panel.open {
+            left: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .menu-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu-option {
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-option:hover {
+            background: var(--bg-hover);
+            transform: translateX(5px);
+        }
+
+        .menu-option.logout {
+            margin-top: 20px;
+            color: var(--danger);
+        }
+
+        /* Support Button */
+        .support-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 99;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite, bounce 3s infinite;
+        }
+
+        .support-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .support-btn i {
+            font-size: 24px;
+            color: white;
+        }
+
+        /* Admin Panel */
+        .admin-section {
+            display: none;
+        }
+
+        .admin-section.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .admin-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.6s ease;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .user-list, .investment-list, .transaction-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .user-item, .investment-item, .transaction-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .user-item:hover, .investment-item:hover, .transaction-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .user-actions, .investment-actions, .transaction-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .admin-tab.active {
+            border-bottom: 3px solid var(--accent);
+            color: var(--accent);
+        }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: modalSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-wide {
+            max-width: 800px;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes modalSlideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-panel {
+                width: 280px;
+                left: -280px;
+            }
+            
+            .balance-amount {
+                font-size: 36px;
+            }
+            
+            .quick-actions-horizontal {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-tabs {
+                flex-direction: column;
+            }
+            
+            .user-actions, .investment-actions, .transaction-actions {
+                flex-direction: column;
+            }
+            
+            .auth-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ====================== -->
+    <!-- AUTHENTICATION SECTION -->
+    <!-- ====================== -->
+    <div id="auth-section" class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <div class="auth-logo" id="auth-logo" ondblclick="showAdminLogin()">
+                    <i class="fas fa-cube"></i>
+                    <span id="auth-platform-name">Prime Hub Investment</span>
+                </div>
+                <p style="color: var(--text-secondary);">Secure Crypto Investment Platform</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="switchAuthTab('login')">Login</div>
+                <div class="auth-tab" onclick="switchAuthTab('register')">Register</div>
+            </div>
+            
+            <div id="login-form">
+                <div class="form-group">
+                    <label for="login-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" oninput="validateEmailField(this)">
+                    <div class="error-message" id="login-email-error">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" oninput="validatePasswordField(this)">
+                    <span class="toggle-password" onclick="togglePassword('login-password')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <div class="error-message" id="login-password-error">Password must be at least 6 characters</div>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-password">
+                    <label for="remember-password">Remember me</label>
+                </div>
+                <button class="btn btn-primary" onclick="login()" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </div>
+            
+            <div id="register-form" style="display: none;">
+                <div class="form-group">
+                    <label for="register-name"><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="register-name" placeholder="Enter your full name" oninput="validateNameField(this)">
+                    <div class="error-message" id="register-name-error">Please enter your full name</div>
+                </div>
+                <div class="form-group">
+                    <label for="register-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="register-email" placeholder="Enter your email" oninput="validateEmailField(this)">
+                    <div class="error-message" id="register-email-error">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="register-password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="register-password" placeholder="Create a password" oninput="validatePasswordField(this)">
+                    <span class="toggle-password" onclick="togglePassword('register-password')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <div class="error-message" id="register-password-error">Password must be at least 6 characters</div>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm"><i class="fas fa-lock"></i> Confirm Password</label>
+                    <input type="password" id="register-confirm" placeholder="Confirm your password" oninput="validateConfirmPasswordField(this)">
+                    <span class="toggle-password" onclick="togglePassword('register-confirm')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <div class="error-message" id="register-confirm-error">Passwords do not match</div>
+                </div>
+                <button class="btn btn-primary" onclick="register()" style="width: 100%;">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== -->
+    <!-- MAIN DASHBOARD -->
+    <!-- ==================== -->
+    <div id="dashboard" class="container" style="display: none;">
+        <!-- Menu Panel -->
+        <div class="menu-panel" id="menuPanel">
+            <div class="menu-header">
+                <div class="menu-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <div id="menu-username">User Name</div>
+                    <div id="menu-userid" style="color: var(--text-secondary); font-size: 14px;">ID: #12345</div>
+                </div>
+            </div>
+            <div class="menu-options">
+                <div class="menu-option" onclick="showSection('deposit')">
+                    <i class="fas fa-wallet"></i> Deposit
+                </div>
+                <div class="menu-option" onclick="showSection('withdraw')">
+                    <i class="fas fa-money-bill-wave"></i> Withdraw
+                </div>
+                <div class="menu-option" onclick="showSection('history')">
+                    <i class="fas fa-history"></i> History
+                </div>
+                <div class="menu-option logout" onclick="confirmLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="back-btn" onclick="goBack()" style="display: none;" id="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="logo" ondblclick="showAdminLogin()">
+                    <i class="fas fa-cube"></i>
+                    <span id="platform-name">Prime Hub Investment</span>
+                </div>
+                <div class="user-actions">
+                    <div class="notification-bell" onclick="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <div class="notification-badge" id="notification-count">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="dashboard-section" class="dashboard-section active">
+                <div class="welcome-card">
+                    <h1>Welcome back, <span id="welcome-username">User</span>! 👋</h1>
+                    <p>Ready to grow your investments today</p>
+                </div>
+                
+                <div class="balance-card">
+                    <div class="balance-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div style="color: var(--text-secondary); font-size: 14px;">Total Balance</div>
+                    <div class="balance-amount"><span id="currency-symbol">$</span><span id="user-balance">0.00</span></div>
+                    <div class="profit-amount">
+                        <i class="fas fa-chart-line"></i> Total Profit: <span id="currency-symbol-profit">$</span><span id="total-profit">0.00</span>
+                    </div>
+                </div>
+
+                <!-- Compact Side-by-Side Action Buttons -->
+                <div class="quick-actions-horizontal">
+                    <div class="action-btn-compact" onclick="showSection('deposit')">
+                        <div class="action-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="action-text">
+                            <div class="action-title">Deposit</div>
+                            <div class="action-subtitle">Add Funds</div>
+                        </div>
+                    </div>
+                    <div class="action-btn-compact" onclick="showSection('withdraw')">
+                        <div class="action-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="action-text">
+                            <div class="action-title">Withdraw</div>
+                            <div class="action-subtitle">Get Funds</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Investments Section -->
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Active Investments</h2>
+                    <div class="view-all" onclick="showSection('plans')">Browse Plans</div>
+                </div>
+                
+                <div id="active-investments">
+                    <!-- Active investments will be loaded here -->
+                </div>
+            </div>
+
+            <!-- ==================== -->
+            <!-- INVESTMENT PLANS SECTION -->
+            <!-- ==================== -->
+            <div id="plans-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cubes"></i> Investment Plans</h2>
+                    <div class="view-all" onclick="showSection('dashboard')">Back to Dashboard</div>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 25px; text-align: center;">
+                    Choose your investment plan and start earning today
+                </p>
+                
+                <div class="plans-grid" id="plans-container">
+                    <!-- Plans will be loaded from database -->
+                </div>
+            </div>
+
+            <!-- ==================== -->
+            <!-- DEPOSIT SECTION -->
+            <!-- ==================== -->
+            <div id="deposit-section" class="dashboard-section">
+                <h2 style="margin-bottom: 20px;"><i class="fas fa-wallet"></i> Deposit Funds</h2>
+                <div class="transaction-card">
+                    <div class="step-indicator">
+                        <div class="step active">1</div>
+                        <div class="step">2</div>
+                    </div>
+                    
+                    <div id="deposit-step-1">
+                        <div class="form-group">
+                            <label for="deposit-amount"><i class="fas fa-money-bill-wave"></i> Amount (<span id="deposit-currency">USDT</span>)</label>
+                            <input type="number" id="deposit-amount" placeholder="Enter deposit amount">
+                        </div>
+                        <div class="limits">Minimum: <span id="min-deposit">10</span> | Maximum: <span id="max-deposit">10000</span></div>
+                        <button class="btn btn-primary" onclick="nextDepositStep()" style="width: 100%;">
+                            <i class="fas fa-arrow-right"></i> Continue
+                        </button>
+                    </div>
+                    
+                    <div id="deposit-step-2" style="display: none;">
+                        <div style="text-align: center; margin: 20px 0;">
+                            <div style="color: var(--text-secondary); margin-bottom: 10px;">Send <span id="payment-method">USDT (TRC20)</span> to this address:</div>
+                            <div class="wallet-address" id="usdt-address">TBAq6CLRcZ8L7KZyW9mJ2nP4rQs1X3vE5</div>
+                            <div style="margin: 15px 0;">
+                                <img src="" id="qr-code" style="max-width: 200px; border-radius: 10px; display: none;">
+                            </div>
+                            <button class="btn" onclick="copyAddress()" style="margin-top: 10px;">
+                                <i class="fas fa-copy"></i> Copy Address
+                            </button>
+                        </div>
+                        <button class="btn btn-success" onclick="confirmDeposit()" style="width: 100%;">
+                            <i class="fas fa-check-circle"></i> I've Sent the Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== -->
+            <!-- WITHDRAW SECTION -->
+            <!-- ==================== -->
+            <div id="withdraw-section" class="dashboard-section">
+                <h2 style="margin-bottom: 20px;"><i class="fas fa-money-bill-wave"></i> Withdraw Funds</h2>
+                <div class="transaction-card">
+                    <div class="step-indicator">
+                        <div class="step active">1</div>
+                        <div class="step">2</div>
+                    </div>
+                    
+                    <div id="withdraw-step-1">
+                        <div class="form-group">
+                            <label for="withdraw-amount"><i class="fas fa-money-bill-wave"></i> Amount (<span id="withdraw-currency">USDT</span>)</label>
+                            <input type="number" id="withdraw-amount" placeholder="Enter withdrawal amount">
+                        </div>
+                        <div class="limits">Minimum: <span id="min-withdraw">10</span> | Maximum: <span id="max-withdraw">5000</span></div>
+                        <button class="btn btn-primary" onclick="nextWithdrawStep()" style="width: 100%;">
+                            <i class="fas fa-arrow-right"></i> Continue
+                        </button>
+                    </div>
+                    
+                    <div id="withdraw-step-2" style="display: none;">
+                        <div class="form-group">
+                            <label for="withdraw-wallet"><i class="fas fa-wallet"></i> USDT Wallet Address</label>
+                            <input type="text" id="withdraw-wallet" placeholder="Enter your USDT wallet address">
+                        </div>
+                        <button class="btn btn-success" onclick="confirmWithdrawal()" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Request Withdrawal
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== -->
+            <!-- TRANSACTION HISTORY SECTION -->
+            <!-- ==================== -->
+            <div id="history-section" class="dashboard-section">
+                <h2 style="margin-bottom: 20px;"><i class="fas fa-history"></i> Transaction History</h2>
+                <div id="history-content">
+                    <div style="max-height: 500px; overflow-y: auto; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px;">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-table-body">
+                                <!-- History will be loaded from database -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="empty-history" style="text-align: center; padding: 40px; color: var(--text-secondary); display: none;">
+                        <i class="fas fa-history" style="font-size: 48px; margin-bottom: 15px;"></i>
+                        <p>No transactions yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== -->
+            <!-- PROFILE SECTION -->
+            <!-- ==================== -->
+            <div id="profile-section" class="dashboard-section">
+                <h2 style="margin-bottom: 20px;"><i class="fas fa-user-cog"></i> Profile Settings</h2>
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <div id="profile-username">User Name</div>
+                            <div style="color: var(--text-secondary); font-size: 14px;">Member since <span id="member-since">2023</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-name"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="profile-name" placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="profile-email" placeholder="Your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-password"><i class="fas fa-lock"></i> New Password</label>
+                        <input type="password" id="profile-password" placeholder="Leave blank to keep current">
+                        <span class="toggle-password" onclick="togglePassword('profile-password')">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <button class="btn btn-primary" onclick="updateProfile()" style="width: 100%;">
+                        <i class="fas fa-save"></i> Update Profile
+                    </button>
+                    
+                    <!-- ==================== -->
+                    <!-- REFERRAL LINK SECTION -->
+                    <!-- ==================== -->
+                    <div class="form-group" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <label for="referral-link"><i class="fas fa-share-alt"></i> Your Referral Link</label>
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <input type="text" id="referral-link" readonly style="flex: 1; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: var(--text);">
+                            <button class="btn" onclick="copyReferralLink()" style="white-space: nowrap; background: var(--primary);">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div style="color: var(--text-secondary); font-size: 12px; margin-top: 5px;">
+                            Share this link with friends to invite them to the platform
+                        </div>
+                    </div>
+                    
+                    <div class="profile-options">
+                        <div class="profile-option">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security Settings</span>
+                        </div>
+                        <div class="profile-option">
+                            <i class="fas fa-bell"></i>
+                            <span>Notification Preferences</span>
+                        </div>
+                        <div class="profile-option danger" onclick="confirmCloseAccount()">
+                            <i class="fas fa-trash"></i>
+                            <span>Close Account</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="showSection('dashboard')">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </div>
+            <div class="nav-item" onclick="showSection('plans')">
+                <i class="fas fa-chart-line"></i>
+                <span>Plans</span>
+            </div>
+            <div class="nav-item" onclick="showSection('history')">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </div>
+            <div class="nav-item" onclick="showSection('profile')">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== -->
+    <!-- ADMIN PANEL -->
+    <!-- ==================== -->
+    <div id="admin-panel" class="container" style="display: none;">
+        <div class="main-content">
+            <div class="header">
+                <div class="back-btn" onclick="exitAdminPanel()">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="logo">
+                    <i class="fas fa-cogs"></i>
+                    <span>Admin Panel</span>
+                </div>
+                <button class="btn btn-danger" onclick="exitAdminPanel()">
+                    <i class="fas fa-sign-out-alt"></i> Exit Admin
+                </button>
+            </div>
+
+            <div class="admin-tabs">
+                <div class="admin-tab active" onclick="switchAdminTab('overview')">Overview</div>
+                <div class="admin-tab" onclick="switchAdminTab('users')">Users</div>
+                <div class="admin-tab" onclick="switchAdminTab('investments')">Investments</div>
+                <div class="admin-tab" onclick="switchAdminTab('transactions')">Transactions</div>
+                <div class="admin-tab" onclick="switchAdminTab('plans')">Plans</div>
+                <div class="admin-tab" onclick="switchAdminTab('settings')">Settings</div>
+            </div>
+
+            <!-- Admin Overview -->
+            <div id="admin-overview" class="admin-section active">
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <h3><i class="fas fa-users"></i> Total Users</h3>
+                        <div class="balance-amount" id="total-users">0</div>
+                    </div>
+                    <div class="admin-card">
+                        <h3><i class="fas fa-chart-line"></i> Active Investments</h3>
+                        <div class="balance-amount" id="total-investments">0</div>
+                    </div>
+                    <div class="admin-card">
+                        <h3><i class="fas fa-money-bill-wave"></i> Total Deposits</h3>
+                        <div class="balance-amount"><span id="admin-currency-symbol">$</span><span id="total-deposits">0.00</span></div>
+                    </div>
+                    <div class="admin-card">
+                        <h3><i class="fas fa-wallet"></i> Platform Balance</h3>
+                        <div class="balance-amount"><span id="admin-currency-symbol2">$</span><span id="platform-balance">0.00</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Management -->
+            <div id="admin-users" class="admin-section">
+                <div class="admin-card">
+                    <h3><i class="fas fa-users"></i> User Management</h3>
+                    <div class="user-list" id="user-list">
+                        <!-- Users will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investments Management -->
+            <div id="admin-investments" class="admin-section">
+                <div class="admin-card">
+                    <h3><i class="fas fa-chart-line"></i> Investment Management</h3>
+                    <div class="investment-list" id="investment-list">
+                        <!-- Investments will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions Management -->
+            <div id="admin-transactions" class="admin-section">
+                <div class="admin-card">
+                    <h3><i class="fas fa-exchange-alt"></i> Pending Transactions</h3>
+                    <div class="transaction-list" id="admin-transactions-list">
+                        <!-- Pending transactions will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plans Management -->
+            <div id="admin-plans" class="admin-section">
+                <div class="admin-card">
+                    <h3><i class="fas fa-cubes"></i> Investment Plans</h3>
+                    <button class="btn btn-primary" onclick="showCreatePlanModal()" style="margin-bottom: 20px;">
+                        <i class="fas fa-plus"></i> Create New Plan
+                    </button>
+                    <div class="plans-grid" id="admin-plans-container">
+                        <!-- Admin plans will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Management -->
+            <div id="admin-settings" class="admin-section">
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <h3><i class="fas fa-cog"></i> Platform Settings</h3>
+                        <div class="form-group">
+                            <label for="platform-currency">Currency Symbol</label>
+                            <input type="text" id="platform-currency" placeholder="$" maxlength="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="support-link">Support Link</label>
+                            <input type="url" id="support-link" placeholder="https://t.me/support">
+                        </div>
+                        <button class="btn btn-primary" onclick="updatePlatformSettings()">
+                            <i class="fas fa-save"></i> Save Settings
+                        </button>
+                    </div>
+
+                    <div class="admin-card">
+                        <h3><i class="fas fa-wallet"></i> Payment Settings</h3>
+                        <div class="form-group">
+                            <label for="payment-method-input">Payment Method Name</label>
+                            <input type="text" id="payment-method-input" placeholder="USDT (TRC20)">
+                        </div>
+                        <div class="form-group">
+                            <label for="wallet-address">Wallet Address</label>
+                            <input type="text" id="wallet-address" placeholder="TBAq6CLRcZ8L7KZyW9mJ2nP4rQs1X3vE5">
+                        </div>
+                        <div class="form-group">
+                            <label for="qr-code-url">QR Code Image URL</label>
+                            <input type="url" id="qr-code-url" placeholder="https://example.com/qr.png">
+                        </div>
+                        <!-- ==================== -->
+                        <!-- REFERRAL LINK SETTING -->
+                        <!-- ==================== -->
+                        <div class="form-group">
+                            <label for="referral-base-url"><i class="fas fa-link"></i> Referral Link</label>
+                            <input type="url" id="referral-base-url" placeholder="https://your-platform.com/invite">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-top: 5px;">
+                                This link will be shown to users in their profile
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="updatePaymentSettings()">
+                            <i class="fas fa-save"></i> Save Payment Settings
+                        </button>
+                    </div>
+
+                    <div class="admin-card">
+                        <h3><i class="fas fa-sliders-h"></i> Transaction Limits</h3>
+                        <div class="form-group">
+                            <label for="min-deposit-amount">Minimum Deposit</label>
+                            <input type="number" id="min-deposit-amount" placeholder="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="max-deposit-amount">Maximum Deposit</label>
+                            <input type="number" id="max-deposit-amount" placeholder="10000">
+                        </div>
+                        <div class="form-group">
+                            <label for="min-withdraw-amount">Minimum Withdrawal</label>
+                            <input type="number" id="min-withdraw-amount" placeholder="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="max-withdraw-amount">Maximum Withdrawal</label>
+                            <input type="number" id="max-withdraw-amount" placeholder="5000">
+                        </div>
+                        <!-- ==================== -->
+                        <!-- WELCOME BONUS SETTING -->
+                        <!-- ==================== -->
+                        <div class="form-group">
+                            <label for="welcome-bonus-amount"><i class="fas fa-gift"></i> Welcome Bonus Amount</label>
+                            <input type="number" id="welcome-bonus-amount" placeholder="1000">
+                            <div style="color: var(--text-secondary); font-size: 12px; margin-top: 5px;">
+                                Amount new users receive when they register
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="updateTransactionLimits()">
+                            <i class="fas fa-save"></i> Save Limits
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== -->
+    <!-- SUPPORT BUTTON -->
+    <!-- ==================== -->
+    <div class="support-btn" onclick="openSupport()">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <!-- ==================== -->
+    <!-- MODALS SECTION -->
+    <!-- ==================== -->
+    <!-- Investment Modal -->
+    <div class="modal-overlay" id="invest-modal">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 20px;" id="invest-modal-title"><i class="fas fa-chart-line"></i> Invest in Starter Plan</h2>
+            <div class="form-group">
+                <label for="invest-amount"><i class="fas fa-money-bill-wave"></i> Investment Amount (<span id="invest-currency">USDT</span>)</label>
+                <input type="number" id="invest-amount" placeholder="Enter amount" min="100">
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 12px; margin: 15px 0;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span><i class="fas fa-percentage"></i> ROI:</span>
+                    <span id="invest-roi">15%</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span><i class="fas fa-coins"></i> Total Return:</span>
+                    <span id="invest-return">$115.00</span>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn" onclick="closeModal('invest-modal')" style="flex: 1;"><i class="fas fa-times"></i> Cancel</button>
+                <button class="btn btn-primary" onclick="confirmInvestment()" style="flex: 1;"><i class="fas fa-check"></i> Confirm Investment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="modal-overlay" id="admin-login-modal">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 20px; text-align: center;"><i class="fas fa-user-shield"></i> Admin Login</h2>
+            <div class="form-group">
+                <label for="admin-email"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="admin-email" placeholder="Enter admin email">
+            </div>
+            <div class="form-group">
+                <label for="admin-password"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" id="admin-password" placeholder="Enter admin password">
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn" onclick="closeModal('admin-login-modal')" style="flex: 1;"><i class="fas fa-times"></i> Cancel</button>
+                <button class="btn btn-primary" onclick="adminLogin()" style="flex: 1;"><i class="fas fa-sign-in-alt"></i> Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Plan Modal -->
+    <div class="modal-overlay" id="create-plan-modal">
+        <div class="modal-content modal-wide">
+            <h2 style="margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Create Investment Plan</h2>
+            <div class="admin-grid">
+                <div class="form-group">
+                    <label for="plan-name"><i class="fas fa-tag"></i> Plan Name</label>
+                    <input type="text" id="plan-name" placeholder="Starter Plan">
+                </div>
+                <div class="form-group">
+                    <label for="plan-description"><i class="fas fa-align-left"></i> Description</label>
+                    <input type="text" id="plan-description" placeholder="Perfect for beginners">
+                </div>
+                <div class="form-group">
+                    <label for="plan-category"><i class="fas fa-layer-group"></i> Category</label>
+                    <select id="plan-category" class="form-control">
+                        <option value="crypto">Cryptocurrency</option>
+                        <option value="stocks">Stocks</option>
+                        <option value="real-estate">Real Estate</option>
+                        <option value="forex">Forex Trading</option>
+                        <option value="commodities">Commodities</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="plan-min-amount"><i class="fas fa-dollar-sign"></i> Minimum Amount</label>
+                    <input type="number" id="plan-min-amount" placeholder="100">
+                </div>
+                <div class="form-group">
+                    <label for="plan-duration"><i class="fas fa-calendar-alt"></i> Duration (Days)</label>
+                    <input type="number" id="plan-duration" placeholder="7">
+                </div>
+                <div class="form-group">
+                    <label for="plan-roi"><i class="fas fa-percentage"></i> ROI Percentage</label>
+                    <input type="number" id="plan-roi" placeholder="15">
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="btn" onclick="closeModal('create-plan-modal')" style="flex: 1;"><i class="fas fa-times"></i> Cancel</button>
+                <button class="btn btn-primary" onclick="createPlan()" style="flex: 1;"><i class="fas fa-plus"></i> Create Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal-overlay" id="edit-user-modal">
+        <div class="modal-content modal-wide">
+            <h2 style="margin-bottom: 20px;"><i class="fas fa-user-edit"></i> Edit User</h2>
+            <div class="admin-grid">
+                <div class="form-group">
+                    <label for="edit-user-name"><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="edit-user-name">
+                </div>
+                <div class="form-group">
+                    <label for="edit-user-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="edit-user-email">
+                </div>
+                <div class="form-group">
+                    <label for="edit-user-password"><i class="fas fa-lock"></i> New Password</label>
+                    <input type="password" id="edit-user-password" placeholder="Leave blank to keep current">
+                </div>
+                <div class="form-group">
+                    <label for="edit-user-balance"><i class="fas fa-wallet"></i> Balance</label>
+                    <input type="number" id="edit-user-balance" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="edit-user-profit"><i class="fas fa-chart-line"></i> Total Profit</label>
+                    <input type="number" id="edit-user-profit" step="0.01">
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="btn" onclick="closeModal('edit-user-modal')" style="flex: 1;"><i class="fas fa-times"></i> Cancel</button>
+                <button class="btn btn-primary" onclick="updateUser()" style="flex: 1;"><i class="fas fa-save"></i> Update User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal-overlay" id="loading-modal">
+        <div class="modal-content">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <div id="loading-text">Processing your request...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-content">
+            <div style="text-align: center; padding: 20px;">
+                <i class="fas fa-check-circle" style="font-size: 64px; color: var(--success); margin-bottom: 20px; animation: bounce 1s;"></i>
+                <h2 id="success-title">Success!</h2>
+                <p id="success-message">Your action has been completed successfully.</p>
+                <button class="btn btn-primary" onclick="closeModal('success-modal')" style="margin-top: 20px;"><i class="fas fa-check"></i> Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal-overlay" id="error-modal">
+        <div class="modal-content">
+            <div style="text-align: center; padding: 20px;">
+                <i class="fas fa-exclamation-circle" style="font-size: 64px; color: var(--danger); margin-bottom: 20px; animation: shake 0.5s;"></i>
+                <h2 id="error-title">Error</h2>
+                <p id="error-message">Something went wrong. Please try again.</p>
+                <button class="btn" onclick="closeModal('error-modal')" style="margin-top: 20px;"><i class="fas fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Logout Modal -->
+    <div class="modal-overlay" id="confirm-logout-modal">
+        <div class="modal-content">
+            <div style="text-align: center; padding: 20px;">
+                <i class="fas fa-sign-out-alt" style="font-size: 64px; color: var(--warning); margin-bottom: 20px; animation: pulse 1s infinite;"></i>
+                <h2>Confirm Logout</h2>
+                <p>Are you sure you want to logout?</p>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="btn" onclick="closeModal('confirm-logout-modal')" style="flex: 1;"><i class="fas fa-times"></i> Cancel</button>
+                    <button class="btn btn-danger" onclick="logout()" style="flex: 1;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Close Account Modal -->
+    <div class="modal-overlay" id="confirm-close-account-modal">
+        <div class="modal-content">
+            <div style="text-align: center; padding: 20px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 64px; color: var(--danger); margin-bottom: 20px; animation: pulse 1s infinite;"></i>
+                <h2>Close Account</h2>
+                <p>This action cannot be undone. All your data will be permanently deleted.</p>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="btn" onclick="closeModal('confirm-close-account-modal')" style="flex: 1;"><i class="fas fa-times"></i> Cancel</button>
+                    <button class="btn btn-danger" onclick="closeAccount()" style="flex: 1;"><i class="fas fa-trash"></i> Close Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== -->
+    <!-- JAVASCRIPT CODE -->
+    <!-- ==================== -->
+    <script>
+        // ==================== //
+        // PLATFORM CONFIGURATION //
+        // ==================== //
+        let currentUser = null;
+        let currentPlan = null;
+        let currentSection = 'dashboard';
+        let sectionHistory = ['dashboard'];
+        let isAdmin = false;
+        let editingUserId = null;
+
+        // Investment Categories
+        const investmentCategories = {
+            'crypto': { name: 'Cryptocurrency', icon: 'fas fa-coins', color: '#f59e0b' },
+            'stocks': { name: 'Stocks', icon: 'fas fa-chart-line', color: '#10b981' },
+            'real-estate': { name: 'Real Estate', icon: 'fas fa-home', color: '#ef4444' },
+            'forex': { name: 'Forex Trading', icon: 'fas fa-exchange-alt', color: '#3b82f6' },
+            'commodities': { name: 'Commodities', icon: 'fas fa-gas-pump', color: '#8b5cf6' }
+        };
+
+        // Platform Configuration
+        let platformConfig = {
+            currencySymbol: '$',
+            supportLink: 'https://t.me/PrimeHu_Support_bot',
+            paymentMethod: 'USDT (TRC20)',
+            walletAddress: 'TBAq6CLRcZ8L7KZyW9mJ2nP4rQs1X3vE5',
+            qrCodeUrl: '',
+            minDeposit: 10,
+            maxDeposit: 10000,
+            minWithdraw: 10,
+            maxWithdraw: 5000,
+            welcomeBonus: 1000, // NEW: Welcome bonus amount
+            referralLink: 'https://primehub.com/invite' // NEW: Referral link
+        };
+
+        // ==================== //
+        // DATA STORAGE - AUTO SAVE //
+        // ==================== //
+        let users = [];
+        let investments = [];
+        let transactions = [];
+        let investmentPlans = [
+            {
+                id: 'starter',
+                name: 'Starter Plan',
+                description: 'Perfect for beginners',
+                category: 'crypto',
+                minAmount: 100,
+                duration: 7,
+                roi: 15,
+                active: true
+            },
+            {
+                id: 'premium',
+                name: 'Premium Plan',
+                description: 'For experienced investors',
+                category: 'stocks',
+                minAmount: 500,
+                duration: 14,
+                roi: 25,
+                active: true
+            }
+        ];
+
+        // ==================== //
+        // UTILITY FUNCTIONS //
+        // ==================== //
+        function formatCurrency(amount) {
+            return parseFloat(amount).toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        // ==================== //
+        // ENHANCED SAVING SYSTEM //
+        // ==================== //
+        function saveToLocalStorage() {
+            try {
+                const data = {
+                    users: users,
+                    investments: investments,
+                    transactions: transactions,
+                    investmentPlans: investmentPlans,
+                    platformConfig: platformConfig,
+                    currentUser: currentUser,
+                    lastSave: new Date().toISOString()
+                };
+                localStorage.setItem('primeHubData', JSON.stringify(data));
+                console.log('✅ Data saved at:', new Date().toLocaleTimeString());
+            } catch (error) {
+                console.error('❌ Save failed:', error);
+            }
+        }
+
+        function forceSave() {
+            saveToLocalStorage();
+            setTimeout(saveToLocalStorage, 100);
+        }
+
+        function loadFromLocalStorage() {
+            try {
+                const saved = localStorage.getItem('primeHubData');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    users = data.users || [];
+                    investments = data.investments || [];
+                    transactions = data.transactions || [];
+                    investmentPlans = data.investmentPlans || investmentPlans;
+                    platformConfig = data.platformConfig || platformConfig;
+                    currentUser = data.currentUser || null;
+                    
+                    console.log('📁 Data loaded successfully');
+                    if (data.lastSave) {
+                        console.log('Last save:', new Date(data.lastSave).toLocaleString());
+                    }
+                }
+            } catch (error) {
+                console.error('❌ Load failed:', error);
+            }
+        }
+
+        // ==================== //
+        // AUTHENTICATION FUNCTIONS //
+        // ==================== //
+        function switchAuthTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (tab === 'login') {
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('register-form').style.display = 'none';
+            } else {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            }
+        }
+
+        function validateEmailField(input) {
+            const email = input.value;
+            const errorElement = document.getElementById(input.id + '-error');
+            
+            if (!validateEmail(email)) {
+                input.classList.add('invalid');
+                errorElement.style.display = 'block';
+                return false;
+            } else {
+                input.classList.remove('invalid');
+                errorElement.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validatePasswordField(input) {
+            const password = input.value;
+            const errorElement = document.getElementById(input.id + '-error');
+            
+            if (password.length < 6) {
+                input.classList.add('invalid');
+                errorElement.style.display = 'block';
+                return false;
+            } else {
+                input.classList.remove('invalid');
+                errorElement.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateNameField(input) {
+            const name = input.value;
+            const errorElement = document.getElementById(input.id + '-error');
+            
+            if (!name.trim()) {
+                input.classList.add('invalid');
+                errorElement.style.display = 'block';
+                return false;
+            } else {
+                input.classList.remove('invalid');
+                errorElement.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateConfirmPasswordField(input) {
+            const confirmPassword = input.value;
+            const password = document.getElementById('register-password').value;
+            const errorElement = document.getElementById(input.id + '-error');
+            
+            if (confirmPassword !== password) {
+                input.classList.add('invalid');
+                errorElement.style.display = 'block';
+                return false;
+            } else {
+                input.classList.remove('invalid');
+                errorElement.style.display = 'none';
+                return true;
+            }
+        }
+
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling.querySelector('i');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const rememberMe = document.getElementById('remember-password').checked;
+            
+            if (!validateEmailField(document.getElementById('login-email')) || 
+                !validatePasswordField(document.getElementById('login-password'))) {
+                return;
+            }
+            
+            showLoading('Signing you in...');
+            
+            setTimeout(() => {
+                const existingUser = users.find(u => u.email === email && u.password === password);
+                if (existingUser) {
+                    currentUser = existingUser;
+                    
+                    if (rememberMe) {
+                        localStorage.setItem('rememberedUser', JSON.stringify({
+                            email: email,
+                            password: password,
+                            lastLogin: new Date().toISOString()
+                        }));
+                    }
+                    
+                    forceSave();
+                    updateUserData();
+                    document.getElementById('auth-section').style.display = 'none';
+                    document.getElementById('dashboard').style.display = 'block';
+                    hideLoading();
+                    showSuccess('Login Successful', 'Welcome to Prime Hub Investment!');
+                    loadUserData();
+                } else {
+                    hideLoading();
+                    showError('Login Failed', 'Invalid email or password');
+                }
+            }, 1500);
+        }
+
+        function register() {
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+            
+            if (!validateNameField(document.getElementById('register-name')) ||
+                !validateEmailField(document.getElementById('register-email')) ||
+                !validatePasswordField(document.getElementById('register-password')) ||
+                !validateConfirmPasswordField(document.getElementById('register-confirm'))) {
+                return;
+            }
+            
+            showLoading('Creating your account...');
+            
+            setTimeout(() => {
+                if (users.find(u => u.email === email)) {
+                    hideLoading();
+                    showError('Registration Failed', 'Email already exists');
+                    return;
+                }
+                
+                currentUser = {
+                    uid: 'user-' + Date.now(),
+                    name: name,
+                    email: email,
+                    password: password,
+                    id: '#' + Math.floor(10000 + Math.random() * 90000),
+                    balance: platformConfig.welcomeBonus, // Use dynamic welcome bonus
+                    profit: 0.00,
+                    joinDate: new Date().getFullYear().toString(),
+                    createdAt: new Date().toISOString()
+                };
+                
+                users.push(currentUser);
+                
+                transactions.push({
+                    id: 'tx-welcome-' + Date.now(),
+                    userId: currentUser.uid,
+                    type: 'bonus',
+                    amount: platformConfig.welcomeBonus,
+                    date: new Date().toLocaleDateString(),
+                    status: 'complete',
+                    description: 'Welcome bonus'
+                });
+                
+                forceSave();
+                updateUserData();
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                hideLoading();
+                showSuccess('Registration Successful', `Your account has been created with ${platformConfig.currencySymbol}${formatCurrency(platformConfig.welcomeBonus)} welcome bonus!`);
+                loadUserData();
+            }, 1500);
+        }
+
+        function confirmLogout() {
+            document.getElementById('menuPanel').classList.remove('open');
+            showModal('confirm-logout-modal');
+        }
+
+        function logout() {
+            if (currentUser) {
+                currentUser.lastLogout = new Date().toISOString();
+                forceSave();
+            }
+            
+            currentUser = null;
+            isAdmin = false;
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('auth-section').style.display = 'flex';
+            document.getElementById('menuPanel').classList.remove('open');
+            closeModal('confirm-logout-modal');
+            showSection('dashboard');
+            
+            localStorage.removeItem('rememberedUser');
+            
+            document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
+            document.getElementById('register-name').value = '';
+            document.getElementById('register-email').value = '';
+            document.getElementById('register-password').value = '';
+            document.getElementById('register-confirm').value = '';
+        }
+
+        // ==================== //
+        // DASHBOARD NAVIGATION //
+        // ==================== //
+        function showSection(sectionName) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (sectionName === 'dashboard') {
+                document.querySelector('.nav-item:nth-child(1)').classList.add('active');
+            } else if (sectionName === 'plans') {
+                document.querySelector('.nav-item:nth-child(2)').classList.add('active');
+            } else if (sectionName === 'history') {
+                document.querySelector('.nav-item:nth-child(3)').classList.add('active');
+            } else if (sectionName === 'profile') {
+                document.querySelector('.nav-item:nth-child(4)').classList.add('active');
+            }
+            
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            document.getElementById('menuPanel').classList.remove('open');
+            
+            const backButton = document.getElementById('back-button');
+            if (sectionName === 'dashboard') {
+                backButton.style.display = 'none';
+            } else {
+                backButton.style.display = 'block';
+                if (!sectionHistory.includes(sectionName)) {
+                    sectionHistory.push(sectionName);
+                }
+            }
+            
+            currentSection = sectionName;
+            
+            if (sectionName === 'history') {
+                loadTransactionHistory();
+            } else if (sectionName === 'plans') {
+                loadInvestmentPlans();
+            } else if (sectionName === 'deposit' || sectionName === 'withdraw') {
+                updateTransactionUI();
+            } else if (sectionName === 'dashboard') {
+                loadActiveInvestments();
+            } else if (sectionName === 'profile') {
+                updateReferralLink();
+            }
+            
+            saveToLocalStorage();
+        }
+
+        function goBack() {
+            if (sectionHistory.length > 1) {
+                sectionHistory.pop();
+                const previousSection = sectionHistory[sectionHistory.length - 1];
+                showSection(previousSection);
+            } else {
+                showSection('dashboard');
+            }
+        }
+
+        // ==================== //
+        // MENU & NOTIFICATIONS //
+        // ==================== //
+        function toggleMenu() {
+            document.getElementById('menuPanel').classList.toggle('open');
+            saveToLocalStorage();
+        }
+
+        function toggleNotifications() {
+            const unreadCount = document.getElementById('notification-count').textContent;
+            showSuccess('Notifications', `You have ${unreadCount} unread notifications`);
+        }
+
+        function openSupport() {
+            window.open(platformConfig.supportLink, '_blank');
+        }
+
+        // ==================== //
+        // INVESTMENT FUNCTIONS //
+        // ==================== //
+        function loadInvestmentPlans() {
+            const plansContainer = document.getElementById('plans-container');
+            
+            plansContainer.innerHTML = '';
+            investmentPlans.forEach(plan => {
+                if (plan.active) {
+                    const returnAmount = plan.minAmount * (1 + plan.roi / 100);
+                    const category = investmentCategories[plan.category];
+                    const planCard = document.createElement('div');
+                    planCard.className = 'plan-card';
+                    planCard.innerHTML = `
+                        <div class="plan-category" style="background: ${category.color}">
+                            ${category.name}
+                        </div>
+                        <div class="plan-icon">
+                            <i class="${category.icon}"></i>
+                        </div>
+                        <div class="plan-badge">ACTIVE</div>
+                        <div class="plan-header">
+                            <div class="plan-name">${plan.name}</div>
+                            <div class="plan-desc">${plan.description}</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="plan-detail">
+                                <div class="value">${platformConfig.currencySymbol}${formatCurrency(plan.minAmount)}</div>
+                                <div class="label">Min Investment</div>
+                            </div>
+                            <div class="plan-detail">
+                                <div class="value">${plan.duration} days</div>
+                                <div class="label">Duration</div>
+                            </div>
+                            <div class="plan-detail">
+                                <div class="value">${plan.roi}%</div>
+                                <div class="label">ROI</div>
+                            </div>
+                        </div>
+                        <div class="return-amount">
+                            Return: ${platformConfig.currencySymbol}${formatCurrency(returnAmount)}
+                        </div>
+                        <button class="btn btn-primary" onclick="openInvestModal('${plan.id}')" style="width: 100%;">
+                            <i class="fas fa-chart-line"></i> Invest Now
+                        </button>
+                    `;
+                    plansContainer.appendChild(planCard);
+                }
+            });
+        }
+
+        function openInvestModal(planId) {
+            currentPlan = planId;
+            const plan = investmentPlans.find(p => p.id === planId);
+            const modal = document.getElementById('invest-modal');
+            const title = document.getElementById('invest-modal-title');
+            const roi = document.getElementById('invest-roi');
+            const returnEl = document.getElementById('invest-return');
+            const amountInput = document.getElementById('invest-amount');
+            const currencyEl = document.getElementById('invest-currency');
+            
+            title.textContent = `Invest in ${plan.name}`;
+            roi.textContent = plan.roi + '%';
+            amountInput.min = plan.minAmount;
+            amountInput.value = plan.minAmount;
+            currencyEl.textContent = platformConfig.currencySymbol.replace('$', 'USDT');
+            calculateReturn(plan.minAmount);
+            
+            modal.style.display = 'flex';
+            saveToLocalStorage();
+        }
+
+        function calculateReturn(amount) {
+            const returnEl = document.getElementById('invest-return');
+            const plan = investmentPlans.find(p => p.id === currentPlan);
+            if (plan) {
+                const returnAmount = amount * (1 + plan.roi / 100);
+                returnEl.textContent = platformConfig.currencySymbol + formatCurrency(returnAmount);
+            }
+        }
+
+        function confirmInvestment() {
+            const amount = parseFloat(document.getElementById('invest-amount').value);
+            const plan = investmentPlans.find(p => p.id === currentPlan);
+            
+            if (!plan || amount < plan.minAmount) {
+                showError('Invalid Amount', `Minimum investment for this plan is ${platformConfig.currencySymbol}${formatCurrency(plan.minAmount)}`);
+                return;
+            }
+            
+            if (amount > currentUser.balance) {
+                showError('Insufficient Funds', 'You do not have enough balance for this investment');
+                return;
+            }
+            
+            closeModal('invest-modal');
+            showLoading('Activating your investment...');
+            
+            setTimeout(() => {
+                const investment = {
+                    id: 'inv-' + Date.now(),
+                    userId: currentUser.uid,
+                    planId: currentPlan,
+                    amount: amount,
+                    startDate: new Date().toISOString(),
+                    endDate: new Date(Date.now() + plan.duration * 24 * 60 * 60 * 1000).toISOString(),
+                    status: 'active',
+                    daysLeft: plan.duration,
+                    expectedReturn: amount * (1 + plan.roi / 100),
+                    createdAt: new Date().toISOString()
+                };
+                
+                investments.push(investment);
+                currentUser.balance -= amount;
+                
+                transactions.push({
+                    id: 'tx-invest-' + Date.now(),
+                    userId: currentUser.uid,
+                    type: 'investment',
+                    amount: amount,
+                    date: new Date().toLocaleDateString(),
+                    status: 'complete',
+                    plan: plan.name,
+                    description: `Investment in ${plan.name}`
+                });
+                
+                forceSave();
+                updateUserData();
+                loadActiveInvestments();
+                
+                hideLoading();
+                showSuccess('Investment Started', `You have successfully invested ${platformConfig.currencySymbol}${formatCurrency(amount)} in the ${plan.name}`);
+                
+                setTimeout(() => {
+                    showSection('dashboard');
+                }, 2000);
+            }, 2000);
+        }
+
+        // ==================== //
+        // ACTIVE INVESTMENTS //
+        // ==================== //
+        function loadActiveInvestments() {
+            const activeInvestmentsContainer = document.getElementById('active-investments');
+            if (!activeInvestmentsContainer) return;
+            
+            const userActiveInvestments = investments.filter(inv => 
+                inv.userId === currentUser.uid && inv.status === 'active'
+            );
+            
+            if (userActiveInvestments.length === 0) {
+                activeInvestmentsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: var(--text-secondary); background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                        <i class="fas fa-inbox" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p style="margin-bottom: 15px;">No active investments yet</p>
+                        <button class="btn btn-primary" onclick="showSection('plans')" style="margin-top: 10px;">
+                            <i class="fas fa-chart-line"></i> Browse Investment Plans
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            let investmentsHTML = '';
+            userActiveInvestments.forEach(inv => {
+                const plan = investmentPlans.find(p => p.id === inv.planId);
+                const category = investmentCategories[plan.category];
+                const returnAmount = inv.amount * (1 + (plan ? plan.roi / 100 : 0));
+                const progress = ((plan.duration - inv.daysLeft) / plan.duration) * 100;
+                
+                investmentsHTML += `
+                    <div class="investment-item-compact" style="background: var(--bg-card); padding: 16px; border-radius: 16px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                            <div>
+                                <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;">${plan ? plan.name : 'Unknown Plan'}</div>
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                    <span style="background: ${category.color}; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600;">
+                                        ${category.name}
+                                    </span>
+                                    <span style="color: var(--text-secondary); font-size: 12px;">
+                                        <i class="fas fa-calendar"></i> ${inv.daysLeft} days left
+                                    </span>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: bold; color: var(--accent); font-size: 18px;">${platformConfig.currencySymbol}${formatCurrency(inv.amount)}</div>
+                                <div style="color: var(--success); font-size: 12px; font-weight: 600;">
+                                    +${platformConfig.currencySymbol}${formatCurrency(returnAmount - inv.amount)}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 8px;">
+                            <div style="background: var(--accent); height: 100%; width: ${progress}%; transition: width 0.5s ease;"></div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; color: var(--text-secondary); font-size: 12px;">
+                            <span>Started: ${new Date(inv.startDate).toLocaleDateString()}</span>
+                            <span>ROI: ${plan ? plan.roi + '%' : 'N/A'}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            activeInvestmentsContainer.innerHTML = investmentsHTML;
+        }
+
+        // ==================== //
+        // TRANSACTION FUNCTIONS //
+        // ==================== //
+        function updateTransactionUI() {
+            document.getElementById('deposit-currency').textContent = platformConfig.currencySymbol.replace('$', 'USDT');
+            document.getElementById('withdraw-currency').textContent = platformConfig.currencySymbol.replace('$', 'USDT');
+            document.getElementById('min-deposit').textContent = platformConfig.minDeposit;
+            document.getElementById('max-deposit').textContent = platformConfig.maxDeposit;
+            document.getElementById('min-withdraw').textContent = platformConfig.minWithdraw;
+            document.getElementById('max-withdraw').textContent = platformConfig.maxWithdraw;
+            document.getElementById('payment-method').textContent = platformConfig.paymentMethod;
+            document.getElementById('usdt-address').textContent = platformConfig.walletAddress;
+            
+            const qrCode = document.getElementById('qr-code');
+            if (platformConfig.qrCodeUrl) {
+                qrCode.src = platformConfig.qrCodeUrl;
+                qrCode.style.display = 'block';
+            } else {
+                qrCode.style.display = 'none';
+            }
+        }
+
+        function nextDepositStep() {
+            const amount = parseFloat(document.getElementById('deposit-amount').value);
+            
+            if (!amount || amount < platformConfig.minDeposit) {
+                showError('Invalid Amount', `Minimum deposit amount is ${platformConfig.currencySymbol}${formatCurrency(platformConfig.minDeposit)}`);
+                return;
+            }
+            
+            if (amount > platformConfig.maxDeposit) {
+                showError('Invalid Amount', `Maximum deposit amount is ${platformConfig.currencySymbol}${formatCurrency(platformConfig.maxDeposit)}`);
+                return;
+            }
+            
+            document.getElementById('deposit-step-1').style.display = 'none';
+            document.getElementById('deposit-step-2').style.display = 'block';
+            document.querySelectorAll('.step-indicator .step')[1].classList.add('active');
+            
+            saveToLocalStorage();
+        }
+
+        function nextWithdrawStep() {
+            const amount = parseFloat(document.getElementById('withdraw-amount').value);
+            
+            if (!amount || amount < platformConfig.minWithdraw) {
+                showError('Invalid Amount', `Minimum withdrawal amount is ${platformConfig.currencySymbol}${formatCurrency(platformConfig.minWithdraw)}`);
+                return;
+            }
+            
+            if (amount > platformConfig.maxWithdraw) {
+                showError('Invalid Amount', `Maximum withdrawal amount is ${platformConfig.currencySymbol}${formatCurrency(platformConfig.maxWithdraw)}`);
+                return;
+            }
+            
+            if (amount > currentUser.balance) {
+                showError('Insufficient Funds', 'You do not have enough balance for this withdrawal');
+                return;
+            }
+            
+            document.getElementById('withdraw-step-1').style.display = 'none';
+            document.getElementById('withdraw-step-2').style.display = 'block';
+            document.querySelectorAll('.step-indicator .step')[1].classList.add('active');
+            
+            saveToLocalStorage();
+        }
+
+        function confirmDeposit() {
+            const amount = parseFloat(document.getElementById('deposit-amount').value);
+            
+            showLoading('Processing your deposit...');
+            
+            setTimeout(() => {
+                const transaction = {
+                    id: 'tx-' + Date.now(),
+                    userId: currentUser.uid,
+                    type: 'deposit',
+                    amount: amount,
+                    date: new Date().toLocaleDateString(),
+                    status: 'pending',
+                    createdAt: new Date().toISOString(),
+                    description: 'Deposit request'
+                };
+                
+                transactions.push(transaction);
+                forceSave();
+                
+                hideLoading();
+                showSuccess('Deposit Requested', `Your deposit of ${platformConfig.currencySymbol}${formatCurrency(amount)} is being processed`);
+                
+                resetDepositForm();
+                setTimeout(() => {
+                    showSection('dashboard');
+                }, 2000);
+            }, 2000);
+        }
+
+        function confirmWithdrawal() {
+            const amount = parseFloat(document.getElementById('withdraw-amount').value);
+            const wallet = document.getElementById('withdraw-wallet').value;
+            
+            if (!wallet) {
+                showError('Wallet Required', 'Please enter your USDT wallet address');
+                return;
+            }
+            
+            showLoading('Processing your withdrawal...');
+            
+            setTimeout(() => {
+                const transaction = {
+                    id: 'tx-' + Date.now(),
+                    userId: currentUser.uid,
+                    type: 'withdrawal',
+                    amount: amount,
+                    date: new Date().toLocaleDateString(),
+                    status: 'pending',
+                    wallet: wallet,
+                    createdAt: new Date().toISOString(),
+                    description: 'Withdrawal request'
+                };
+                
+                transactions.push(transaction);
+                forceSave();
+                
+                hideLoading();
+                showSuccess('Withdrawal Requested', `Your withdrawal of ${platformConfig.currencySymbol}${formatCurrency(amount)} is being processed`);
+                
+                resetWithdrawForm();
+                setTimeout(() => {
+                    showSection('dashboard');
+                }, 2000);
+            }, 2000);
+        }
+
+        function resetDepositForm() {
+            document.getElementById('deposit-amount').value = '';
+            document.getElementById('deposit-step-1').style.display = 'block';
+            document.getElementById('deposit-step-2').style.display = 'none';
+            document.querySelectorAll('.step-indicator .step')[1].classList.remove('active');
+        }
+
+        function resetWithdrawForm() {
+            document.getElementById('withdraw-amount').value = '';
+            document.getElementById('withdraw-wallet').value = '';
+            document.getElementById('withdraw-step-1').style.display = 'block';
+            document.getElementById('withdraw-step-2').style.display = 'none';
+            document.querySelectorAll('.step-indicator .step')[1].classList.remove('active');
+        }
+
+        function copyAddress() {
+            const address = document.getElementById('usdt-address').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                showSuccess('Address Copied', 'USDT address has been copied to clipboard');
+                saveToLocalStorage();
+            });
+        }
+
+        // ==================== //
+        // TRANSACTION HISTORY //
+        // ==================== //
+        function loadTransactionHistory() {
+            const tableBody = document.getElementById('history-table-body');
+            const emptyHistory = document.getElementById('empty-history');
+            
+            const userTransactions = transactions.filter(tx => tx.userId === currentUser.uid);
+            
+            tableBody.innerHTML = '';
+            
+            if (userTransactions.length === 0) {
+                emptyHistory.style.display = 'block';
+                document.querySelector('.history-table').style.display = 'none';
+            } else {
+                emptyHistory.style.display = 'none';
+                document.querySelector('.history-table').style.display = 'table';
+                
+                userTransactions.forEach(tx => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${tx.date}</td>
+                        <td>${tx.type}</td>
+                        <td>${platformConfig.currencySymbol}${formatCurrency(tx.amount)}</td>
+                        <td><span class="status-badge status-${tx.status}">${tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}</span></td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+        }
+
+        // ==================== //
+        // PROFILE FUNCTIONS //
+        // ==================== //
+        function updateProfile() {
+            const name = document.getElementById('profile-name').value;
+            const email = document.getElementById('profile-email').value;
+            const password = document.getElementById('profile-password').value;
+            
+            if (!name) {
+                showError('Name Required', 'Please enter your name');
+                return;
+            }
+            
+            if (!validateEmail(email)) {
+                showError('Invalid Email', 'Please enter a valid email address');
+                return;
+            }
+            
+            showLoading('Updating your profile...');
+            
+            setTimeout(() => {
+                currentUser.name = name;
+                currentUser.email = email;
+                currentUser.profileUpdatedAt = new Date().toISOString();
+                
+                if (password) {
+                    currentUser.password = password;
+                    currentUser.passwordUpdatedAt = new Date().toISOString();
+                    showSuccess('Profile Updated', 'Your profile and password have been updated successfully');
+                } else {
+                    showSuccess('Profile Updated', 'Your profile has been updated successfully');
+                }
+                
+                forceSave();
+                updateUserData();
+                hideLoading();
+            }, 2000);
+        }
+
+        // ==================== //
+        // REFERRAL LINK FUNCTIONS //
+        // ==================== //
+        function updateReferralLink() {
+            const referralLinkInput = document.getElementById('referral-link');
+            if (referralLinkInput && platformConfig.referralLink) {
+                referralLinkInput.value = platformConfig.referralLink;
+            }
+        }
+
+        function copyReferralLink() {
+            const referralLink = document.getElementById('referral-link').value;
+            if (referralLink) {
+                navigator.clipboard.writeText(referralLink).then(() => {
+                    showSuccess('Link Copied', 'Referral link has been copied to clipboard');
+                    saveToLocalStorage();
+                });
+            } else {
+                showError('No Link', 'Referral link is not available');
+            }
+        }
+
+        function confirmCloseAccount() {
+            showModal('confirm-close-account-modal');
+        }
+
+        function closeAccount() {
+            showLoading('Closing your account...');
+            
+            setTimeout(() => {
+                const archivedUser = {
+                    ...currentUser,
+                    closedAt: new Date().toISOString(),
+                    reason: 'user_requested'
+                };
+                
+                const archive = JSON.parse(localStorage.getItem('primeHubArchive') || '[]');
+                archive.push(archivedUser);
+                localStorage.setItem('primeHubArchive', JSON.stringify(archive));
+                
+                users = users.filter(u => u.uid !== currentUser.uid);
+                investments = investments.filter(inv => inv.userId !== currentUser.uid);
+                transactions = transactions.filter(tx => tx.userId !== currentUser.uid);
+                
+                forceSave();
+                
+                hideLoading();
+                closeModal('confirm-close-account-modal');
+                logout();
+                showSuccess('Account Closed', 'Your account has been permanently deleted');
+            }, 2000);
+        }
+
+        // ==================== //
+        // ADMIN FUNCTIONS //
+        // ==================== //
+        function showAdminLogin() {
+            showModal('admin-login-modal');
+        }
+
+        function adminLogin() {
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            if (email === 'oopoma47@gmail.com' && password === 'Pomari25') {
+                isAdmin = true;
+                closeModal('admin-login-modal');
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                loadAdminData();
+                showSuccess('Admin Access', 'Welcome to Admin Panel!');
+                
+                console.log('Admin logged in at:', new Date().toLocaleString());
+                saveToLocalStorage();
+            } else {
+                showError('Access Denied', 'Invalid admin credentials');
+            }
+        }
+
+        function exitAdminPanel() {
+            isAdmin = false;
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('auth-section').style.display = 'flex';
+            saveToLocalStorage();
+        }
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('admin-' + tabName).classList.add('active');
+            
+            if (tabName === 'users') {
+                loadUsersList();
+            } else if (tabName === 'investments') {
+                loadInvestmentsList();
+            } else if (tabName === 'transactions') {
+                loadPendingTransactions();
+            } else if (tabName === 'plans') {
+                loadAdminPlans();
+            }
+        }
+
+        function loadAdminData() {
+            document.getElementById('total-users').textContent = users.length;
+            document.getElementById('total-investments').textContent = investments.filter(inv => inv.status === 'active').length;
+            document.getElementById('total-deposits').textContent = formatCurrency(transactions
+                .filter(tx => tx.type === 'deposit' && tx.status === 'complete')
+                .reduce((sum, tx) => sum + tx.amount, 0));
+            document.getElementById('platform-balance').textContent = '0.00';
+            
+            document.querySelectorAll('#admin-currency-symbol, #admin-currency-symbol2').forEach(el => {
+                el.textContent = platformConfig.currencySymbol;
+            });
+            
+            // Load settings values
+            document.getElementById('platform-currency').value = platformConfig.currencySymbol;
+            document.getElementById('support-link').value = platformConfig.supportLink;
+            document.getElementById('payment-method-input').value = platformConfig.paymentMethod;
+            document.getElementById('wallet-address').value = platformConfig.walletAddress;
+            document.getElementById('qr-code-url').value = platformConfig.qrCodeUrl;
+            document.getElementById('min-deposit-amount').value = platformConfig.minDeposit;
+            document.getElementById('max-deposit-amount').value = platformConfig.maxDeposit;
+            document.getElementById('min-withdraw-amount').value = platformConfig.minWithdraw;
+            document.getElementById('max-withdraw-amount').value = platformConfig.maxWithdraw;
+            document.getElementById('welcome-bonus-amount').value = platformConfig.welcomeBonus;
+            document.getElementById('referral-base-url').value = platformConfig.referralLink;
+        }
+
+        function loadUsersList() {
+            const userList = document.getElementById('user-list');
+            userList.innerHTML = '';
+            
+            users.forEach(user => {
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                userItem.innerHTML = `
+                    <div><strong>${user.name}</strong> (${user.email})</div>
+                    <div>ID: ${user.id} | Balance: ${platformConfig.currencySymbol}${formatCurrency(user.balance)}</div>
+                    <div class="user-actions">
+                        <button class="btn btn-primary" onclick="editUser('${user.uid}')">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-success" onclick="addFunds('${user.uid}')">
+                            <i class="fas fa-plus"></i> Add Funds
+                        </button>
+                    </div>
+                `;
+                userList.appendChild(userItem);
+            });
+        }
+
+        function loadInvestmentsList() {
+            const investmentList = document.getElementById('investment-list');
+            investmentList.innerHTML = '';
+            
+            investments.forEach(inv => {
+                const user = users.find(u => u.uid === inv.userId);
+                const plan = investmentPlans.find(p => p.id === inv.planId);
+                const investmentItem = document.createElement('div');
+                investmentItem.className = 'investment-item';
+                investmentItem.innerHTML = `
+                    <div><strong>${user ? user.name : 'Unknown User'}</strong> - ${plan ? plan.name : 'Unknown Plan'}</div>
+                    <div>Amount: ${platformConfig.currencySymbol}${formatCurrency(inv.amount)} | Days Left: ${inv.daysLeft}</div>
+                    <div>Status: <span class="status-badge status-${inv.status}">${inv.status}</span></div>
+                    <div class="investment-actions">
+                        <button class="btn btn-success" onclick="updateInvestmentStatus('${inv.id}', 'complete')">
+                            <i class="fas fa-check"></i> Complete
+                        </button>
+                        <button class="btn btn-warning" onclick="updateInvestmentDays('${inv.id}')">
+                            <i class="fas fa-calendar"></i> Update Days
+                        </button>
+                        <button class="btn btn-danger" onclick="updateInvestmentStatus('${inv.id}', 'cancelled')">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                `;
+                investmentList.appendChild(investmentItem);
+            });
+        }
+
+        function loadPendingTransactions() {
+            const pendingTransactions = transactions.filter(tx => tx.status === 'pending');
+            const adminTransactionsList = document.getElementById('admin-transactions-list');
+            
+            adminTransactionsList.innerHTML = '';
+            
+            if (pendingTransactions.length === 0) {
+                adminTransactionsList.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                        <i class="fas fa-check-circle" style="font-size: 48px; margin-bottom: 15px;"></i>
+                        <p>No pending transactions</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            pendingTransactions.forEach(tx => {
+                const user = users.find(u => u.uid === tx.userId);
+                const transactionItem = document.createElement('div');
+                transactionItem.className = 'transaction-item';
+                transactionItem.innerHTML = `
+                    <div><strong>${user ? user.name : 'Unknown User'}</strong> - ${tx.type.toUpperCase()}</div>
+                    <div>Amount: ${platformConfig.currencySymbol}${formatCurrency(tx.amount)} | Date: ${tx.date}</div>
+                    <div>Status: <span class="status-badge status-${tx.status}">${tx.status}</span></div>
+                    ${tx.wallet ? `<div>Wallet: ${tx.wallet}</div>` : ''}
+                    <div class="transaction-actions">
+                        <button class="btn btn-success" onclick="approveTransaction('${tx.id}')">
+                            <i class="fas fa-check"></i> Approve
+                        </button>
+                        <button class="btn btn-danger" onclick="rejectTransaction('${tx.id}')">
+                            <i class="fas fa-times"></i> Reject
+                        </button>
+                    </div>
+                `;
+                adminTransactionsList.appendChild(transactionItem);
+            });
+        }
+
+        function approveTransaction(transactionId) {
+            const transaction = transactions.find(tx => tx.id === transactionId);
+            if (transaction) {
+                transaction.status = 'complete';
+                
+                if (transaction.type === 'deposit') {
+                    const user = users.find(u => u.uid === transaction.userId);
+                    if (user) {
+                        user.balance += transaction.amount;
+                    }
+                }
+                
+                if (transaction.type === 'withdrawal') {
+                    const user = users.find(u => u.uid === transaction.userId);
+                    if (user) {
+                        user.balance -= transaction.amount;
+                    }
+                }
+                
+                saveToLocalStorage();
+                loadPendingTransactions();
+                showSuccess('Transaction Approved', 'Transaction has been approved successfully');
+            }
+        }
+
+        function rejectTransaction(transactionId) {
+            const transaction = transactions.find(tx => tx.id === transactionId);
+            if (transaction) {
+                transaction.status = 'rejected';
+                saveToLocalStorage();
+                loadPendingTransactions();
+                showSuccess('Transaction Rejected', 'Transaction has been rejected');
+            }
+        }
+
+        function editUser(userId) {
+            const user = users.find(u => u.uid === userId);
+            if (user) {
+                editingUserId = userId;
+                document.getElementById('edit-user-name').value = user.name;
+                document.getElementById('edit-user-email').value = user.email;
+                document.getElementById('edit-user-balance').value = user.balance;
+                document.getElementById('edit-user-profit').value = user.profit;
+                showModal('edit-user-modal');
+            }
+        }
+
+        function updateUser() {
+            const name = document.getElementById('edit-user-name').value;
+            const email = document.getElementById('edit-user-email').value;
+            const password = document.getElementById('edit-user-password').value;
+            const balance = parseFloat(document.getElementById('edit-user-balance').value);
+            const profit = parseFloat(document.getElementById('edit-user-profit').value);
+            
+            const user = users.find(u => u.uid === editingUserId);
+            if (user) {
+                user.name = name;
+                user.email = email;
+                user.balance = balance;
+                user.profit = profit;
+                
+                if (password) {
+                    user.password = password;
+                }
+                
+                saveToLocalStorage();
+                closeModal('edit-user-modal');
+                loadUsersList();
+                showSuccess('User Updated', 'User information has been updated successfully');
+            }
+        }
+
+        function addFunds(userId) {
+            const amount = prompt('Enter amount to add:');
+            if (amount && !isNaN(amount)) {
+                const user = users.find(u => u.uid === userId);
+                if (user) {
+                    user.balance += parseFloat(amount);
+                    saveToLocalStorage();
+                    loadUsersList();
+                    showSuccess('Funds Added', `${platformConfig.currencySymbol}${formatCurrency(amount)} added to user balance`);
+                }
+            }
+        }
+
+        function updateInvestmentStatus(investmentId, status) {
+            const investment = investments.find(inv => inv.id === investmentId);
+            if (investment) {
+                investment.status = status;
+                if (status === 'complete') {
+                    const user = users.find(u => u.uid === investment.userId);
+                    const plan = investmentPlans.find(p => p.id === investment.planId);
+                    if (user && plan) {
+                        const profit = investment.amount * (plan.roi / 100);
+                        user.balance += investment.amount + profit;
+                        user.profit += profit;
+                    }
+                }
+                saveToLocalStorage();
+                loadInvestmentsList();
+                showSuccess('Investment Updated', `Investment status updated to ${status}`);
+            }
+        }
+
+        function updateInvestmentDays(investmentId) {
+            const days = prompt('Enter new days left:');
+            if (days && !isNaN(days)) {
+                const investment = investments.find(inv => inv.id === investmentId);
+                if (investment) {
+                    investment.daysLeft = parseInt(days);
+                    saveToLocalStorage();
+                    loadInvestmentsList();
+                    showSuccess('Days Updated', `Investment days updated to ${days}`);
+                }
+            }
+        }
+
+        function loadAdminPlans() {
+            const plansContainer = document.getElementById('admin-plans-container');
+            plansContainer.innerHTML = '';
+            
+            investmentPlans.forEach(plan => {
+                const category = investmentCategories[plan.category];
+                const planCard = document.createElement('div');
+                planCard.className = 'plan-card';
+                planCard.innerHTML = `
+                    <div class="plan-category" style="background: ${category.color}">
+                        ${category.name}
+                    </div>
+                    <div class="plan-icon">
+                        <i class="${category.icon}"></i>
+                    </div>
+                    <div class="plan-badge">${plan.active ? 'ACTIVE' : 'INACTIVE'}</div>
+                    <div class="plan-header">
+                        <div class="plan-name">${plan.name}</div>
+                        <div class="plan-desc">${plan.description}</div>
+                    </div>
+                    <div class="plan-details">
+                        <div class="plan-detail">
+                            <div class="value">${platformConfig.currencySymbol}${formatCurrency(plan.minAmount)}</div>
+                            <div class="label">Min Investment</div>
+                        </div>
+                        <div class="plan-detail">
+                            <div class="value">${plan.duration} days</div>
+                            <div class="label">Duration</div>
+                        </div>
+                        <div class="plan-detail">
+                            <div class="value">${plan.roi}%</div>
+                            <div class="label">ROI</div>
+                        </div>
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn btn-primary" onclick="editPlan('${plan.id}')">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn ${plan.active ? 'btn-warning' : 'btn-success'}" onclick="togglePlan('${plan.id}')">
+                            <i class="fas fa-power-off"></i> ${plan.active ? 'Deactivate' : 'Activate'}
+                        </button>
+                        <button class="btn btn-danger" onclick="deletePlan('${plan.id}')">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+                plansContainer.appendChild(planCard);
+            });
+        }
+
+        function showCreatePlanModal() {
+            showModal('create-plan-modal');
+        }
+
+        function createPlan() {
+            const name = document.getElementById('plan-name').value;
+            const description = document.getElementById('plan-description').value;
+            const category = document.getElementById('plan-category').value;
+            const minAmount = parseFloat(document.getElementById('plan-min-amount').value);
+            const duration = parseInt(document.getElementById('plan-duration').value);
+            const roi = parseFloat(document.getElementById('plan-roi').value);
+            
+            const newPlan = {
+                id: 'plan-' + Date.now(),
+                name: name,
+                description: description,
+                category: category,
+                minAmount: minAmount,
+                duration: duration,
+                roi: roi,
+                active: true
+            };
+            
+            investmentPlans.push(newPlan);
+            saveToLocalStorage();
+            closeModal('create-plan-modal');
+            loadAdminPlans();
+            showSuccess('Plan Created', 'New investment plan has been created successfully');
+        }
+
+        function editPlan(planId) {
+            const plan = investmentPlans.find(p => p.id === planId);
+            if (plan) {
+                const newName = prompt('Enter new plan name:', plan.name);
+                const newROI = prompt('Enter new ROI percentage:', plan.roi);
+                const newMinAmount = prompt('Enter new minimum amount:', plan.minAmount);
+                
+                if (newName) plan.name = newName;
+                if (newROI && !isNaN(newROI)) plan.roi = parseFloat(newROI);
+                if (newMinAmount && !isNaN(newMinAmount)) plan.minAmount = parseFloat(newMinAmount);
+                
+                saveToLocalStorage();
+                loadAdminPlans();
+                showSuccess('Plan Updated', 'Investment plan has been updated successfully');
+            }
+        }
+
+        function togglePlan(planId) {
+            const plan = investmentPlans.find(p => p.id === planId);
+            if (plan) {
+                plan.active = !plan.active;
+                saveToLocalStorage();
+                loadAdminPlans();
+                showSuccess('Plan Updated', `Plan ${plan.active ? 'activated' : 'deactivated'} successfully`);
+            }
+        }
+
+        function deletePlan(planId) {
+            if (confirm('Are you sure you want to delete this plan?')) {
+                investmentPlans = investmentPlans.filter(p => p.id !== planId);
+                saveToLocalStorage();
+                loadAdminPlans();
+                showSuccess('Plan Deleted', 'Investment plan has been deleted successfully');
+            }
+        }
+
+        function updatePlatformSettings() {
+            const currency = document.getElementById('platform-currency').value;
+            const supportLink = document.getElementById('support-link').value;
+            
+            if (currency) platformConfig.currencySymbol = currency;
+            if (supportLink) platformConfig.supportLink = supportLink;
+            
+            saveToLocalStorage();
+            updateAllCurrencyDisplays();
+            showSuccess('Settings Updated', 'Platform settings have been updated successfully');
+        }
+
+        function updatePaymentSettings() {
+            const paymentMethod = document.getElementById('payment-method-input').value;
+            const walletAddress = document.getElementById('wallet-address').value;
+            const qrCodeUrl = document.getElementById('qr-code-url').value;
+            const referralLink = document.getElementById('referral-base-url').value;
+            
+            if (paymentMethod) platformConfig.paymentMethod = paymentMethod;
+            if (walletAddress) platformConfig.walletAddress = walletAddress;
+            if (qrCodeUrl) platformConfig.qrCodeUrl = qrCodeUrl;
+            if (referralLink) platformConfig.referralLink = referralLink;
+            
+            saveToLocalStorage();
+            showSuccess('Payment Settings Updated', 'Payment settings have been updated successfully');
+        }
+
+        function updateTransactionLimits() {
+            const minDeposit = parseFloat(document.getElementById('min-deposit-amount').value);
+            const maxDeposit = parseFloat(document.getElementById('max-deposit-amount').value);
+            const minWithdraw = parseFloat(document.getElementById('min-withdraw-amount').value);
+            const maxWithdraw = parseFloat(document.getElementById('max-withdraw-amount').value);
+            const welcomeBonus = parseFloat(document.getElementById('welcome-bonus-amount').value);
+            
+            if (!isNaN(minDeposit)) platformConfig.minDeposit = minDeposit;
+            if (!isNaN(maxDeposit)) platformConfig.maxDeposit = maxDeposit;
+            if (!isNaN(minWithdraw)) platformConfig.minWithdraw = minWithdraw;
+            if (!isNaN(maxWithdraw)) platformConfig.maxWithdraw = maxWithdraw;
+            if (!isNaN(welcomeBonus)) platformConfig.welcomeBonus = welcomeBonus;
+            
+            saveToLocalStorage();
+            showSuccess('Limits Updated', 'Transaction limits and welcome bonus have been updated successfully');
+        }
+
+        // ==================== //
+        // USER DATA MANAGEMENT //
+        // ==================== //
+        function loadUserData() {
+            updateUserData();
+            loadInvestmentPlans();
+            loadTransactionHistory();
+            updateTransactionUI();
+            loadActiveInvestments();
+            updateReferralLink();
+        }
+
+        function updateUserData() {
+            if (!currentUser) return;
+            
+            document.getElementById('welcome-username').textContent = currentUser.name;
+            document.getElementById('user-balance').textContent = formatCurrency(currentUser.balance);
+            document.getElementById('total-profit').textContent = formatCurrency(currentUser.profit);
+            document.getElementById('menu-username').textContent = currentUser.name;
+            document.getElementById('menu-userid').textContent = 'ID: ' + currentUser.id;
+            document.getElementById('profile-username').textContent = currentUser.name;
+            document.getElementById('profile-name').value = currentUser.name;
+            document.getElementById('profile-email').value = currentUser.email;
+            document.getElementById('member-since').textContent = currentUser.joinDate;
+        }
+
+        function updateAllCurrencyDisplays() {
+            document.querySelectorAll('#currency-symbol, #currency-symbol-profit').forEach(el => {
+                el.textContent = platformConfig.currencySymbol;
+            });
+            
+            document.getElementById('admin-currency-symbol').textContent = platformConfig.currencySymbol;
+            document.getElementById('admin-currency-symbol2').textContent = platformConfig.currencySymbol;
+            
+            loadInvestmentPlans();
+            if (isAdmin) {
+                loadAdminPlans();
+            }
+        }
+
+        // ==================== //
+        // UI UTILITY FUNCTIONS //
+        // ==================== //
+        function showLoading(message) {
+            document.getElementById('loading-text').textContent = message;
+            showModal('loading-modal');
+        }
+
+        function hideLoading() {
+            closeModal('loading-modal');
+        }
+
+        function showSuccess(title, message) {
+            document.getElementById('success-title').textContent = title;
+            document.getElementById('success-message').textContent = message;
+            showModal('success-modal');
+            saveToLocalStorage();
+        }
+
+        function showError(title, message) {
+            document.getElementById('error-title').textContent = title;
+            document.getElementById('error-message').textContent = message;
+            showModal('error-modal');
+        }
+
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            saveToLocalStorage();
+        }
+
+        // ==================== //
+        // INITIALIZATION //
+        // ==================== //
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('platform-name').textContent = 'Prime Hub Investment';
+            document.getElementById('platform-title').textContent = 'Prime Hub Investment';
+            document.getElementById('auth-platform-name').textContent = 'Prime Hub Investment';
+            
+            document.getElementById('invest-amount').addEventListener('input', function() {
+                calculateReturn(parseFloat(this.value) || 0);
+            });
+            
+            document.getElementById('auth-section').style.display = 'flex';
+            
+            loadFromLocalStorage();
+            
+            const rememberedUser = localStorage.getItem('rememberedUser');
+            if (rememberedUser) {
+                const userData = JSON.parse(rememberedUser);
+                document.getElementById('login-email').value = userData.email;
+                document.getElementById('login-password').value = userData.password;
+                document.getElementById('remember-password').checked = true;
+            }
+            
+            if (users.length === 0) {
+                users.push({
+                    uid: 'demo-user',
+                    name: 'John Doe',
+                    email: 'user@example.com',
+                    password: 'password123',
+                    id: '#12345',
+                    balance: 1000.00,
+                    profit: 150.00,
+                    joinDate: '2023',
+                    createdAt: new Date().toISOString()
+                });
+                
+                transactions.push({
+                    id: 'tx-sample',
+                    userId: 'demo-user',
+                    type: 'deposit',
+                    amount: 1000,
+                    date: new Date().toLocaleDateString(),
+                    status: 'complete',
+                    createdAt: new Date().toISOString()
+                });
+                
+                console.log('📝 Sample data created');
+                forceSave();
+            }
+            
+            console.log('🚀 Prime Hub Investment initialized successfully!');
+            console.log('💾 Auto-saving enabled - all activities will be saved');
+        });
+
+        // ==================== //
+        // AUTO-SAVE SYSTEM //
+        // ==================== //
+        setInterval(saveToLocalStorage, 2000);
+
+        window.addEventListener('beforeunload', function() {
+            forceSave();
+        });
+
+        window.onclick = function(event) {
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    saveToLocalStorage();
+                }
+            });
+            
+            const menuPanel = document.getElementById('menuPanel');
+            if (!event.target.closest('.menu-panel') && !event.target.closest('.menu-btn') && menuPanel.classList.contains('open')) {
+                menuPanel.classList.remove('open');
+                saveToLocalStorage();
+            }
+        }
+    </script>
+</body>
+</html>
